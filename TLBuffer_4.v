@@ -1,0 +1,103 @@
+module TLBuffer_4( // @[:chipyard.TestHarness.RocketConfig.fir@39066.2]
+  input         clock, // @[:chipyard.TestHarness.RocketConfig.fir@39067.4]
+  input         reset, // @[:chipyard.TestHarness.RocketConfig.fir@39068.4]
+  output        auto_in_a_ready, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input         auto_in_a_valid, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input  [2:0]  auto_in_a_bits_opcode, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input  [3:0]  auto_in_a_bits_size, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input  [31:0] auto_in_a_bits_address, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input  [7:0]  auto_in_a_bits_mask, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input  [63:0] auto_in_a_bits_data, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input         auto_in_d_ready, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output        auto_in_d_valid, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output [2:0]  auto_in_d_bits_opcode, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output [1:0]  auto_in_d_bits_param, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output [3:0]  auto_in_d_bits_size, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output [2:0]  auto_in_d_bits_sink, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output        auto_in_d_bits_denied, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output [63:0] auto_in_d_bits_data, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output        auto_in_d_bits_corrupt, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input         auto_out_a_ready, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output        auto_out_a_valid, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output [2:0]  auto_out_a_bits_opcode, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output [3:0]  auto_out_a_bits_size, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output [31:0] auto_out_a_bits_address, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output [7:0]  auto_out_a_bits_mask, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output [63:0] auto_out_a_bits_data, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  output        auto_out_d_ready, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input         auto_out_d_valid, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input  [2:0]  auto_out_d_bits_opcode, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input  [1:0]  auto_out_d_bits_param, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input  [3:0]  auto_out_d_bits_size, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input  [2:0]  auto_out_d_bits_sink, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input         auto_out_d_bits_denied, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input  [63:0] auto_out_d_bits_data, // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+  input         auto_out_d_bits_corrupt // @[:chipyard.TestHarness.RocketConfig.fir@39069.4]
+);
+  wire  TLMonitor_clock; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire  TLMonitor_reset; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire  TLMonitor_io_in_a_ready; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire  TLMonitor_io_in_a_valid; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire [2:0] TLMonitor_io_in_a_bits_opcode; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire [3:0] TLMonitor_io_in_a_bits_size; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire [31:0] TLMonitor_io_in_a_bits_address; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire [7:0] TLMonitor_io_in_a_bits_mask; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire  TLMonitor_io_in_d_ready; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire  TLMonitor_io_in_d_valid; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire [2:0] TLMonitor_io_in_d_bits_opcode; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire [1:0] TLMonitor_io_in_d_bits_param; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire [3:0] TLMonitor_io_in_d_bits_size; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire [2:0] TLMonitor_io_in_d_bits_sink; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire  TLMonitor_io_in_d_bits_denied; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  wire  TLMonitor_io_in_d_bits_corrupt; // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+  TLMonitor_17 TLMonitor ( // @[Nodes.scala 25:25:chipyard.TestHarness.RocketConfig.fir@39076.4]
+    .clock(TLMonitor_clock),
+    .reset(TLMonitor_reset),
+    .io_in_a_ready(TLMonitor_io_in_a_ready),
+    .io_in_a_valid(TLMonitor_io_in_a_valid),
+    .io_in_a_bits_opcode(TLMonitor_io_in_a_bits_opcode),
+    .io_in_a_bits_size(TLMonitor_io_in_a_bits_size),
+    .io_in_a_bits_address(TLMonitor_io_in_a_bits_address),
+    .io_in_a_bits_mask(TLMonitor_io_in_a_bits_mask),
+    .io_in_d_ready(TLMonitor_io_in_d_ready),
+    .io_in_d_valid(TLMonitor_io_in_d_valid),
+    .io_in_d_bits_opcode(TLMonitor_io_in_d_bits_opcode),
+    .io_in_d_bits_param(TLMonitor_io_in_d_bits_param),
+    .io_in_d_bits_size(TLMonitor_io_in_d_bits_size),
+    .io_in_d_bits_sink(TLMonitor_io_in_d_bits_sink),
+    .io_in_d_bits_denied(TLMonitor_io_in_d_bits_denied),
+    .io_in_d_bits_corrupt(TLMonitor_io_in_d_bits_corrupt)
+  );
+  assign auto_in_a_ready = auto_out_a_ready; // @[LazyModule.scala 181:31:chipyard.TestHarness.RocketConfig.fir@39102.4]
+  assign auto_in_d_valid = auto_out_d_valid; // @[LazyModule.scala 181:31:chipyard.TestHarness.RocketConfig.fir@39102.4]
+  assign auto_in_d_bits_opcode = auto_out_d_bits_opcode; // @[LazyModule.scala 181:31:chipyard.TestHarness.RocketConfig.fir@39102.4]
+  assign auto_in_d_bits_param = auto_out_d_bits_param; // @[LazyModule.scala 181:31:chipyard.TestHarness.RocketConfig.fir@39102.4]
+  assign auto_in_d_bits_size = auto_out_d_bits_size; // @[LazyModule.scala 181:31:chipyard.TestHarness.RocketConfig.fir@39102.4]
+  assign auto_in_d_bits_sink = auto_out_d_bits_sink; // @[LazyModule.scala 181:31:chipyard.TestHarness.RocketConfig.fir@39102.4]
+  assign auto_in_d_bits_denied = auto_out_d_bits_denied; // @[LazyModule.scala 181:31:chipyard.TestHarness.RocketConfig.fir@39102.4]
+  assign auto_in_d_bits_data = auto_out_d_bits_data; // @[LazyModule.scala 181:31:chipyard.TestHarness.RocketConfig.fir@39102.4]
+  assign auto_in_d_bits_corrupt = auto_out_d_bits_corrupt; // @[LazyModule.scala 181:31:chipyard.TestHarness.RocketConfig.fir@39102.4]
+  assign auto_out_a_valid = auto_in_a_valid; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@39101.4]
+  assign auto_out_a_bits_opcode = auto_in_a_bits_opcode; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@39101.4]
+  assign auto_out_a_bits_size = auto_in_a_bits_size; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@39101.4]
+  assign auto_out_a_bits_address = auto_in_a_bits_address; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@39101.4]
+  assign auto_out_a_bits_mask = auto_in_a_bits_mask; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@39101.4]
+  assign auto_out_a_bits_data = auto_in_a_bits_data; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@39101.4]
+  assign auto_out_d_ready = auto_in_d_ready; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@39101.4]
+  assign TLMonitor_clock = clock; // @[:chipyard.TestHarness.RocketConfig.fir@39077.4]
+  assign TLMonitor_reset = reset; // @[:chipyard.TestHarness.RocketConfig.fir@39078.4]
+  assign TLMonitor_io_in_a_ready = auto_out_a_ready; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39098.4]
+  assign TLMonitor_io_in_a_valid = auto_in_a_valid; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39097.4]
+  assign TLMonitor_io_in_a_bits_opcode = auto_in_a_bits_opcode; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39096.4]
+  assign TLMonitor_io_in_a_bits_size = auto_in_a_bits_size; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39094.4]
+  assign TLMonitor_io_in_a_bits_address = auto_in_a_bits_address; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39092.4]
+  assign TLMonitor_io_in_a_bits_mask = auto_in_a_bits_mask; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39091.4]
+  assign TLMonitor_io_in_d_ready = auto_in_d_ready; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39088.4]
+  assign TLMonitor_io_in_d_valid = auto_out_d_valid; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39087.4]
+  assign TLMonitor_io_in_d_bits_opcode = auto_out_d_bits_opcode; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39086.4]
+  assign TLMonitor_io_in_d_bits_param = auto_out_d_bits_param; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39085.4]
+  assign TLMonitor_io_in_d_bits_size = auto_out_d_bits_size; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39084.4]
+  assign TLMonitor_io_in_d_bits_sink = auto_out_d_bits_sink; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39082.4]
+  assign TLMonitor_io_in_d_bits_denied = auto_out_d_bits_denied; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39081.4]
+  assign TLMonitor_io_in_d_bits_corrupt = auto_out_d_bits_corrupt; // @[Nodes.scala 26:19:chipyard.TestHarness.RocketConfig.fir@39079.4]
+endmodule
