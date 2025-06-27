@@ -1,0 +1,15 @@
+module ClockGroupAggregator_3( // @[:chipyard.TestHarness.RocketConfig.fir@41105.2]
+  input   auto_in_member_1_clock, // @[:chipyard.TestHarness.RocketConfig.fir@41106.4]
+  input   auto_in_member_1_reset, // @[:chipyard.TestHarness.RocketConfig.fir@41106.4]
+  input   auto_in_member_0_clock, // @[:chipyard.TestHarness.RocketConfig.fir@41106.4]
+  input   auto_in_member_0_reset, // @[:chipyard.TestHarness.RocketConfig.fir@41106.4]
+  output  auto_out_1_member_0_clock, // @[:chipyard.TestHarness.RocketConfig.fir@41106.4]
+  output  auto_out_1_member_0_reset, // @[:chipyard.TestHarness.RocketConfig.fir@41106.4]
+  output  auto_out_0_member_0_clock, // @[:chipyard.TestHarness.RocketConfig.fir@41106.4]
+  output  auto_out_0_member_0_reset // @[:chipyard.TestHarness.RocketConfig.fir@41106.4]
+);
+  assign auto_out_1_member_0_clock = auto_in_member_1_clock; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@41123.4]
+  assign auto_out_1_member_0_reset = auto_in_member_1_reset; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@41123.4]
+  assign auto_out_0_member_0_clock = auto_in_member_0_clock; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@41122.4]
+  assign auto_out_0_member_0_reset = auto_in_member_0_reset; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@41122.4]
+endmodule

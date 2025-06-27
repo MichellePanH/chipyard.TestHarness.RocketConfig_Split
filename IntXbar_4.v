@@ -1,0 +1,18 @@
+module IntXbar_4( // @[:chipyard.TestHarness.RocketConfig.fir@195737.2]
+  input   auto_int_in_3_0, // @[:chipyard.TestHarness.RocketConfig.fir@195740.4]
+  input   auto_int_in_2_0, // @[:chipyard.TestHarness.RocketConfig.fir@195740.4]
+  input   auto_int_in_1_0, // @[:chipyard.TestHarness.RocketConfig.fir@195740.4]
+  input   auto_int_in_1_1, // @[:chipyard.TestHarness.RocketConfig.fir@195740.4]
+  input   auto_int_in_0_0, // @[:chipyard.TestHarness.RocketConfig.fir@195740.4]
+  output  auto_int_out_0, // @[:chipyard.TestHarness.RocketConfig.fir@195740.4]
+  output  auto_int_out_1, // @[:chipyard.TestHarness.RocketConfig.fir@195740.4]
+  output  auto_int_out_2, // @[:chipyard.TestHarness.RocketConfig.fir@195740.4]
+  output  auto_int_out_3, // @[:chipyard.TestHarness.RocketConfig.fir@195740.4]
+  output  auto_int_out_4 // @[:chipyard.TestHarness.RocketConfig.fir@195740.4]
+);
+  assign auto_int_out_0 = auto_int_in_0_0; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@195755.4]
+  assign auto_int_out_1 = auto_int_in_1_0; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@195755.4]
+  assign auto_int_out_2 = auto_int_in_1_1; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@195755.4]
+  assign auto_int_out_3 = auto_int_in_2_0; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@195755.4]
+  assign auto_int_out_4 = auto_int_in_3_0; // @[LazyModule.scala 181:49:chipyard.TestHarness.RocketConfig.fir@195755.4]
+endmodule
